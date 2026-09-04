@@ -1,0 +1,4 @@
+# dsh-hotkey bundle patch: insert this plugin into a profile's layer stack.
+- insert:
+    - id: dsh-hotkey
+      name: 'dsh-hotkey'

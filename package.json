@@ -1,0 +1,70 @@
+{
+  "name": "dsh-hotkey",
+  "version": "0.2.0",
+  "description": "Dynamic event + hotkey bindings for the DeepSeek Harness Web GUI, with DSH defaults and an extensible browser event registry.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/types/client/index.d.ts",
+      "default": "./dist/client.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "build": "tsdown && tsc -p tsconfig.client-types.json",
+    "prepare": "pnpm run build",
+    "watch": "tsdown --watch",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "node --test --experimental-strip-types tests/*.test.ts"
+  },
+  "files": [
+    "dist/index.js",
+    "dist/index.d.ts",
+    "dist/client.js",
+    "dist/client.js.map",
+    "dist/types",
+    "cordis.patch.yml"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "hotkey",
+    "shortcuts"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@deepseek-ai/schemastery": "^3.18.1"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/jsdom": "21.1.7",
+    "@types/node": "^22.10.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "jsdom": "26.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsdown": "^0.22.0",
+    "typescript": "^5.7.2"
+  }
+}

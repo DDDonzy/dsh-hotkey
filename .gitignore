@@ -1,0 +1,11 @@
+node_modules
+lib
+dist
+.dsh-test-home
+.dsh-test-*
+.chrome-*
+.pack-*
+hotkey-smoke-*.png
+source-browser/
+*.log
+.DS_Store
