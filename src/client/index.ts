@@ -24,7 +24,6 @@ import {
   normalizeHotkeySettings,
   type HotkeySettings,
 } from './types.ts'
-import { HotkeySettingsSection } from './HotkeySettingsSection.tsx'
 import { HotkeyPluginCard } from './HotkeyPluginCard.tsx'
 
 /**
@@ -437,9 +436,6 @@ function currentSessionHistory(sessions: SessionsService | undefined): SessionHi
 function installSettingsSlots(ctx: CordisContext): void {
   const slots = ctx.get?.('slots') as SlotsService | undefined
   if (slots === undefined) return
-  slots.inject('settings.section', () => slots.register({
-    name: 'settings.section', id: 'hotkey', order: 30, label: 'Hotkey',
-  }, HotkeySettingsSection))
   slots.inject('settings.plugin.item', () => slots.register({
     name: 'settings.plugin.item', key: HOTKEY_SETTINGS_NAMESPACE,
     locale: 'dsh-hotkey', order: 30,

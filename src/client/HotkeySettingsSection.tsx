@@ -62,7 +62,7 @@ function fallbackEventName(event: string): string {
 
 function eventName(event: string, definition: HotkeyEventDefinition | undefined): string {
   const label = definition?.label ?? fallbackEventName(event)
-  return eventGroup(event, definition) === 'dsh' ? label : `Plugin · ${label}`
+  return label
 }
 
 function compactRows(
@@ -510,7 +510,7 @@ export function HotkeySettingsSection(): ReactNode {
         onClear={key => { const row = rowForKey(key); if (row !== undefined) clearRow(row) }}
       />
       <BindingGroupView
-        title="Other"
+        title="DSH-Plugin Hotkey"
         rows={viewRows(otherRows)}
         canAdd={otherOptions.length > 0}
         writable={canEditBindings}
